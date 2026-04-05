@@ -1,0 +1,74 @@
+[project]
+name = "faster-whisper-server"
+version = "0.0.2"
+description = "OpenAI-compatible FastAPI server for faster-whisper."
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+	{ name = "andyjjrt" },
+]
+license = { text = "MIT" }
+keywords = [
+	"whisper",
+	"faster-whisper",
+	"speech-to-text",
+	"transcription",
+	"fastapi",
+]
+classifiers = [
+	"Development Status :: 3 - Alpha",
+	"License :: OSI Approved :: MIT License",
+	"Programming Language :: Python :: 3",
+	"Programming Language :: Python :: 3 :: Only",
+	"Programming Language :: Python :: 3.10",
+	"Programming Language :: Python :: 3.11",
+	"Programming Language :: Python :: 3.12",
+	"Framework :: FastAPI",
+	"Topic :: Multimedia :: Sound/Audio :: Speech",
+	"Topic :: Software Development :: Libraries :: Application Frameworks",
+]
+dependencies = [
+	"fastapi>=0.110.0",
+	"uvicorn[standard]>=0.29.0",
+	"python-multipart>=0.0.9",
+	"pyyaml>=6.0.1",
+	"faster-whisper>=1.2.1",
+]
+
+[project.urls]
+Homepage = "https://github.com/andyjjrt/faster-whisper-server"
+Repository = "https://github.com/andyjjrt/faster-whisper-server"
+
+[project.scripts]
+faster-whisper-server = "faster_whisper_server.cli:main"
+
+[project.optional-dependencies]
+dev = [
+	"pre-commit>=3.7.1",
+	"ruff>=0.6.8",
+	"build>=1.4.0",
+]
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.5.1",
+    "ruff>=0.15.0",
+]
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["faster_whisper_server"]

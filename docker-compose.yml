@@ -1,0 +1,37 @@
+services:
+  faster-whisper:
+    build:
+      context: ./faster-whisper-server
+    container_name: voice-kit-faster-whisper-server
+    environment:
+      HF_HOME: /hf-cache
+      HF_HUB_DISABLE_TELEMETRY: "1"
+    ports:
+      - "9100:9100"
+    volumes:
+      - ./hf-cache:/hf-cache
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:9100/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+
+  piper:
+    build:
+      context: ./piper-server
+    container_name: voice-kit-piper-server
+    environment:
+      HF_HOME: /hf-cache
+      PIPER_CACHE_DIR: /hf-cache
+      HF_HUB_DISABLE_TELEMETRY: "1"
+    ports:
+      - "9200:9200"
+    volumes:
+      - ./hf-cache:/hf-cache
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:9200/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s

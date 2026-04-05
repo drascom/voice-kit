@@ -1,0 +1,21 @@
+cache_dir: /Users/drascom/Documents/work/voice-kit/hf-cache
+default_model: turkish
+models:
+  - name: turkish
+    repo_id: speaches-ai/piper-tr_TR-fahrettin-medium
+  - name: tts-1
+    repo_id: speaches-ai/piper-tr_TR-fahrettin-medium
+  - name: tts-1-hd
+    repo_id: speaches-ai/piper-tr_TR-fahrettin-medium
+  - name: fahrettin
+    repo_id: speaches-ai/piper-tr_TR-fahrettin-medium
+  - name: speaches-ai/piper-tr_TR-fahrettin-medium
+    repo_id: speaches-ai/piper-tr_TR-fahrettin-medium
+  - name: dfki
+    repo_id: speaches-ai/piper-tr_TR-dfki-medium
+  - name: speaches-ai/piper-tr_TR-dfki-medium
+    repo_id: speaches-ai/piper-tr_TR-dfki-medium
+  - name: fettah
+    repo_id: speaches-ai/piper-tr_TR-fettah-medium
+  - name: speaches-ai/piper-tr_TR-fettah-medium
+    repo_id: speaches-ai/piper-tr_TR-fettah-medium

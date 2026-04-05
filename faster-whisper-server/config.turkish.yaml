@@ -1,0 +1,11 @@
+batch_size: 1
+model_options:
+  device: auto
+  compute_type: default
+models:
+  - name: turkish
+    path: drascom/whisper-large-v3-turbo-turkish-ct2
+  - name: whisper-1
+    path: drascom/whisper-large-v3-turbo-turkish-ct2
+  - name: selimc/whisper-large-v3-turbo-turkish
+    path: drascom/whisper-large-v3-turbo-turkish-ct2
