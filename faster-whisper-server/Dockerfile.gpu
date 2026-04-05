@@ -3,12 +3,15 @@ FROM nvidia/cuda:12.6.3-cudnn-runtime-ubuntu24.04
 ENV DEBIAN_FRONTEND=noninteractive \
     PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
-    PIP_NO_CACHE_DIR=1
+    PIP_NO_CACHE_DIR=1 \
+    PATH=/opt/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
+        build-essential \
         python3 \
         python3-pip \
+        python3-venv \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
@@ -16,8 +19,9 @@ WORKDIR /app
 COPY pyproject.toml README.md config.yaml config.gpu.yaml main.py preload_models.py start.sh /app/
 COPY faster_whisper_server /app/faster_whisper_server
 
-RUN python3 -m pip install --break-system-packages --upgrade pip \
-    && python3 -m pip install --break-system-packages .
+RUN python3 -m venv /opt/venv \
+    && /opt/venv/bin/pip install --upgrade pip setuptools wheel \
+    && /opt/venv/bin/pip install .
 
 EXPOSE 9100
 
