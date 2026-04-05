@@ -21,7 +21,8 @@ COPY faster_whisper_server /app/faster_whisper_server
 
 RUN python3 -m venv /opt/venv \
     && /opt/venv/bin/pip install --upgrade pip setuptools wheel \
-    && /opt/venv/bin/pip install .
+    && /opt/venv/bin/pip install . \
+    && chmod +x /app/start.sh
 
 EXPOSE 9100
 
