@@ -6,7 +6,7 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 
 WORKDIR /app
 
-COPY pyproject.toml README.md config.turkish.yaml main.py preload_models.py start.sh /app/
+COPY pyproject.toml README.md config.yaml main.py preload_models.py start.sh /app/
 COPY faster_whisper_server /app/faster_whisper_server
 
 RUN pip install --upgrade pip \

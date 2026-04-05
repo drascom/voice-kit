@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 from pathlib import Path
 
 import yaml
@@ -7,7 +8,7 @@ from faster_whisper import WhisperModel
 
 
 def main() -> None:
-    config_path = Path("/app/config.turkish.yaml")
+    config_path = Path(os.getenv("FWS_CONFIG_PATH", "/app/config.yaml"))
     data = yaml.safe_load(config_path.read_text()) or {}
     models = data.get("models") or []
 

@@ -1,0 +1,24 @@
+FROM nvidia/cuda:12.6.3-cudnn-runtime-ubuntu24.04
+
+ENV DEBIAN_FRONTEND=noninteractive \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PIP_NO_CACHE_DIR=1
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        python3 \
+        python3-pip \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+COPY pyproject.toml README.md config.yaml config.gpu.yaml main.py preload_models.py start.sh /app/
+COPY faster_whisper_server /app/faster_whisper_server
+
+RUN python3 -m pip install --break-system-packages --upgrade pip \
+    && python3 -m pip install --break-system-packages .
+
+EXPOSE 9100
+
+CMD ["/app/start.sh"]

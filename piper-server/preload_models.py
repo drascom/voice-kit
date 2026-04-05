@@ -7,7 +7,7 @@ from huggingface_hub import snapshot_download
 
 
 def main() -> None:
-    config_path = Path("/app/config.turkish.yaml")
+    config_path = Path("/app/config.yaml")
     data = yaml.safe_load(config_path.read_text()) or {}
     models = data.get("models") or []
 

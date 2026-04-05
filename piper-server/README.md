@@ -16,7 +16,7 @@ uv pip install -e .
 ```bash
 cd /Users/drascom/Documents/work/voice-kit/piper-server
 HF_HOME=/Users/drascom/Documents/work/voice-kit/hf-cache \
-uv run piper-server --config config.turkish.yaml --port 9200 --reload
+uv run piper-server --config config.yaml --port 9200 --reload
 ```
 
 ## Test

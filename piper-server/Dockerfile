@@ -6,7 +6,7 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 
 WORKDIR /app
 
-COPY pyproject.toml README.md config.turkish.yaml preload_models.py start.sh /app/
+COPY pyproject.toml README.md config.yaml preload_models.py start.sh /app/
 COPY src /app/src
 
 RUN pip install --upgrade pip \

@@ -1,0 +1,18 @@
+services:
+  faster-whisper:
+    build:
+      context: ./faster-whisper-server
+      dockerfile: Dockerfile.gpu
+    environment:
+      FWS_CONFIG_PATH: /app/config.gpu.yaml
+      PYTHON_BIN: python3
+    healthcheck:
+      test: ["CMD", "python3", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:9100/health')"]
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities:
+                - gpu
